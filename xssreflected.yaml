@@ -17,7 +17,7 @@ requests:
       - Query("{{.payload}}")
     middlewares:
       - >-
-        InvokeCmd("node detectpopup.js '{{.InjectedURL}}';killall -9 Chromium")
+        InvokeCmd("node detectpopup.js '[[.InjectedURL]]';killall -9 Chromium")
 
     detections:
       - >-
