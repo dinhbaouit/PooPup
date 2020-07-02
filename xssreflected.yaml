@@ -1,4 +1,3 @@
-# info to search signature
 id: Fuzz XSS Reflected
 type: fuzz
 info:
@@ -7,6 +6,7 @@ info:
 
 variables:
   - pl: |
+        <script>confirm(1337)</script>
         javascript:confirm(1337)
 payloads:
   - "{{.pl}}"

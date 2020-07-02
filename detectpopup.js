@@ -10,7 +10,7 @@ const puppeteer = require('puppeteer');
 
     const xssalert = "==== XSS Detected ====";
     const page = await browser.newPage();
-
+    await page.setBypassCSP(true);
 
     page.on('dialog', async dialog => {
         if(dialog.message() == 1337)
