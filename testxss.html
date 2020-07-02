@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>	XSS Site </title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var url = new URL(document.URL);
+			var content = url.searchParams.get("content");
+			var redirect = url.searchParams.get("url");
+			if(redirect == null)
+			{
+				if(content != null)
+				{
+					document.write(content);
+				}
+				else
+				{
+					document.write("Empty Page");
+				}
+			}
+			else
+			{
+				location.href = redirect;
+			}
+		</script>
+	</body>
+</html>
