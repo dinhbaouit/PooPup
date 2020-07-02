@@ -10,18 +10,15 @@ const puppeteer = require('puppeteer');
 
     const xssalert = "==== XSS Detected ====";
     const page = await browser.newPage();
-    const domain = await page.evaluate(() => document.domain);
 
 
     page.on('dialog', async dialog => {
-
-
-    if(dialog.message() == domain)
-        {
-            console.log(xssalert);
-        }
-    await dialog.dismiss();
-  });
+        if(dialog.message() == 1337)
+            {
+                console.log(xssalert);
+            }
+        await dialog.dismiss();
+      });
 
     await page.goto(url);
     browser.close();

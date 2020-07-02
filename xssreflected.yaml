@@ -7,9 +7,7 @@ info:
 
 variables:
   - pl: |
-        javascript%3a/*%22/*%2560/*%27/*/%22/*--></title></textarea></noscript></noembed></template></style></script>%26lt%3b<script>/**/alert()//%26lt%3b</script><iframe/onload%3dalert(document.domain)>
-        alert(document.domain)
-        javascript:alert(document.domain)
+        javascript:confirm(1337)
 payloads:
   - "{{.pl}}"
 requests:
